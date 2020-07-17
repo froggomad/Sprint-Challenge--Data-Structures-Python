@@ -1,17 +1,17 @@
 class RingBuffer:
     def __init__(self, max_value):
         self.pointer = 0
-        self.max_value = max_value
+        self.capacity = max_value
         self.storage = []
 
     def get(self):
         return self.storage
 
     def append(self, value):
-        if len(self.storage) < self.max_value:
+        if len(self.storage) < self.capacity:
             self.storage.append(value)
         else:
-            if self.pointer == self.max_value:
+            if self.pointer == self.capacity:
                 self.pointer = 0
             self.storage[self.pointer] = value
             self.pointer += 1
